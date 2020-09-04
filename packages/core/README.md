@@ -1,3 +1,3 @@
-# github-exporter-core
+# GitHub Artifact Exporter - Core
 
-> Shared core library for exporting GitHub objects
+The shared core library for all GitHub Artifacts Exporter packages.
