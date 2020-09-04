@@ -2,10 +2,12 @@
 
 The GitHub Exporter provides a set of packages to make exporting artifacts from GitHub easier
 
-Supported artifacts that you can export are
+## Supported export artifacts
+
 - Issues (including filtered sub sets)
 
-Supported formats of the export file are
+## Supported export formats
+
 - CSV
 - JIRA formatted CSV
 - JSON
