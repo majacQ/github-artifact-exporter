@@ -1,23 +1,23 @@
-# github-exporter
+# GitHub artifact exporter CLI
 
-Exporter for GitHub
+A CLI to help export artifact from GitHub
 
 <!-- toc -->
-* [github-exporter](#github-exporter)
+* [github-exporter](#github-artifact-exporter-cli)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
 
-# Usage
+## Usage
 
 This script requires a `personal access token` with access to the repository you are exporting from. The `owner` and `repo` arguments can be found in the repository url.
 
 See the table below for examples of `owner` and `repo`
 
-| Description               | URL                        | owner | repo |
-| ------------------------- | -------------------------- | ----- | ---- |
-| GitHub.com example        | https://github.com/foo/bar | foo   | bar  |
-| GitHub Enterprise example | https://ghe.host/foo/bar   | foo   | bar  |
+| Description                      | URL                        | owner | repo |
+| -------------------------------- | -------------------------- | ----- | ---- |
+| GitHub.com example               | https://github.com/foo/bar | foo   | bar  |
+| GitHub Enterprise Server example | https://ghe.host/foo/bar   | foo   | bar  |
 
 <!-- usage -->
 ```sh-session
@@ -38,28 +38,28 @@ USAGE
 ### Exporting issues
 
 ```
-github-exporter.exe search:issues --owner github --repo caseflow --token <github-token> --since 2020-06-01 --until 2020-06-08 --format CSV > issue_export.csv
+github-exporter.exe search:issues --owner <repo_owner> --repo <repo_name> --token <github-token> --since 2020-06-01 --until 2020-06-08 --format CSV > issue_export.csv
 ```
 
 ### Exporting closed issues with specific labels
 
 ```
-github-exporter.exe search:issues --owner github --repo caseflow --token <github-token> --state closed --updatedSince 2020-06-01 --updatedUntil 2020-06-08 --labels "Type: Bug" --format CSV > issue_export.csv
+github-exporter.exe search:issues --owner <repo_owner> --repo <repo_name> --token <github-token> --state closed --updatedSince 2020-06-01 --updatedUntil 2020-06-08 --labels "Type: Bug" --format CSV > issue_export.csv
 ```
 
 ### Exporting commits
 
 ```
-github-exporter.exe repo:commits --owner github --repo caseflow --token <github-token> --since 2020-06-01 --until 2020-06-08 --format CSV > commit_export.csv
+github-exporter.exe repo:commits --owner <repo_owner> --repo <repo_name> --token <github-token> --since 2020-06-01 --until 2020-06-08 --format CSV > commit_export.csv
 ```
 
 ### Exporting pull requests
 
 ```
-github-exporter.exe repo:pulls --owner github --repo caseflow --token $GITHUB_TOKEN --format CSV > pulls_export.csv
+github-exporter.exe repo:pulls --owner <repo_owner> --repo <repo_name> --token $GITHUB_TOKEN --format CSV > pulls_export.csv
 ```
 
-# Commands
+## Commands
 
 <!-- commands -->
 * [`github-exporter help [COMMAND]`](#github-exporter-help-command)
@@ -71,11 +71,11 @@ github-exporter.exe repo:pulls --owner github --repo caseflow --token $GITHUB_TO
 * [`github-exporter search`](#github-exporter-search)
 * [`github-exporter search:issues`](#github-exporter-searchissues)
 
-## `github-exporter help [COMMAND]`
+### `github-exporter help [COMMAND]`
 
-display help for github-exporter
+Display help text for github-exporter.
 
-```
+```shell
 USAGE
   $ github-exporter help [COMMAND]
 
@@ -88,7 +88,7 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
 
-## `github-exporter repo`
+### `github-exporter repo`
 
 Export GitHub artifacts from a repository
 
@@ -104,9 +104,9 @@ OPTIONS
   --token=token        (required) GitHub personal access token
 ```
 
-_See code: [src/commands/repo.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/repo.ts)_
+_See code: [src/commands/repo.ts](src/commands/repo.ts)_
 
-## `github-exporter repo:commits`
+### `github-exporter repo:commits`
 
 Export GitHub Commits for a repository
 
@@ -125,13 +125,13 @@ OPTIONS
   --until=until        search commits created before yyyy-mm-dd
 ```
 
-_See code: [src/commands/repo/commits.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/repo/commits.ts)_
+_See code: [src/commands/repo/commits.ts](src/commands/repo/commits.ts)_
 
-## `github-exporter repo:milestones`
+### `github-exporter repo:milestones`
 
 Export GitHub Milestones for a repository
 
-```
+```shell
 USAGE
   $ github-exporter repo:milestones
 
@@ -143,13 +143,13 @@ OPTIONS
   --token=token        (required) GitHub personal access token
 ```
 
-_See code: [src/commands/repo/milestones.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/repo/milestones.ts)_
+_See code: [src/commands/repo/milestones.ts](src/commands/repo/milestones.ts)_
 
-## `github-exporter repo:pulls`
+### `github-exporter repo:pulls`
 
 Export GitHub Pull Requests for a repository
 
-```
+```shell
 USAGE
   $ github-exporter repo:pulls
 
@@ -161,13 +161,13 @@ OPTIONS
   --token=token        (required) GitHub personal access token
 ```
 
-_See code: [src/commands/repo/pulls.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/repo/pulls.ts)_
+_See code: [src/commands/repo/pulls.ts](src/commands/repo/pulls.ts)_
 
-## `github-exporter repo:releases`
+### `github-exporter repo:releases`
 
 Export GitHub Releases for a repository
 
-```
+```shell
 USAGE
   $ github-exporter repo:releases
 
@@ -179,13 +179,13 @@ OPTIONS
   --token=token        (required) GitHub personal access token
 ```
 
-_See code: [src/commands/repo/releases.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/repo/releases.ts)_
+_See code: [src/commands/repo/releases.ts](src/commands/repo/releases.ts)_
 
-## `github-exporter search`
+### `github-exporter search`
 
 GitHub Search base command
 
-```
+```shell
 USAGE
   $ github-exporter search
 
@@ -197,13 +197,13 @@ OPTIONS
   --token=token        (required) GitHub personal access token
 ```
 
-_See code: [src/commands/search.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/search.ts)_
+_See code: [src/commands/search.ts](src/commands/search.ts)_
 
-## `github-exporter search:issues`
+### `github-exporter search:issues`
 
 Export GitHub Issues using Search
 
-```
+```shell
 USAGE
   $ github-exporter search:issues
 
@@ -223,5 +223,5 @@ OPTIONS
   --updatedUntil=updatedUntil  search issues updated before yyyy-mm-dd
 ```
 
-_See code: [src/commands/search/issues.ts](https://github.com/github/github-exporter/blob/v1.5.8/src/commands/search/issues.ts)_
+_See code: [src/commands/search/issues.ts](src/commands/search/issues.ts)_
 <!-- commandsstop -->
