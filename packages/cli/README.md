@@ -1,4 +1,4 @@
-# GitHub artifact exporter CLI
+# GitHub Artifact Exporter - CLI
 
 A CLI to help export artifact from GitHub
 
