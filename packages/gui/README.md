@@ -1,11 +1,3 @@
-# `gui`
+# GitHub Artifact Exporter - GUI
 
-> TODO: description
-
-## Usage
-
-```
-const gui = require('gui');
-
-// TODO: DEMONSTRATE API
-```
+Electron application to help export GitHub Artifacts.
